@@ -1,14 +1,14 @@
-import exppress from 'express';
+import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import 'dotenv/config';
 import pino from 'pino-http';
 
 
-const app = exppress();
+const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-app.use(exppress.json());
+app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(
@@ -27,21 +27,12 @@ app.use(
   }),
 );
 
-app.post('/notes', (req, res) => {
-  console.log(req.body);
-  res.status(201).json({ message: 'Note created' });
-});
-
 app.get('/notes', (req, res) => {
-  res.status(200).json({ notes: [], message: 'Retrieved all notes' });
+  res.status(200).json({message: 'Retrieved all notes' });
 });
-app.get('/notes/:id', (req, res) => {
-  const { id } = req.params;
-  res.status(200).json({ note: { id, title: 'Sample Note', content: 'This is a sample note.' }, message: 'Retrieved note with ID: ${id}' });
-});
-
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Hello World!' });
+app.get('/notes/:noteId', (req, res) => {
+  const { noteId } = req.params;
+  res.status(200).json({message: `Retrieved note with ID: ${noteId}` });
 });
 
 app.get('/test-error', (req, res) => {
