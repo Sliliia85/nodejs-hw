@@ -10,18 +10,15 @@ const noteSchema = new mongoose.Schema({
   content: {
     type: String,
     trim: true,
-    default: false,
+    default: '',
   },
   tag: {
     type: String,
     trim: true,
-    enum: ['Work', 'Personal', 'Meeting', 'Shopping', 'Ideas', 'Travel', 'Finance', 'Health', 'Important'],
+    enum: ['Work', 'Personal', 'Meeting', 'Shopping', 'Ideas', 'Travel', 'Finance', 'Health', 'Important', 'Todo'],
     default: 'Todo',
   },
-  onDuty: {
-    type: Boolean,
-    default: false,
-  },
+
 },
 {
     timestamps: true,
