@@ -1,5 +1,5 @@
 import createHttpError from 'http-errors';
-import { Note } from '../modelsnote.js';
+import { Note } from '../models/note.js';
 
 export const getNotes = async (req, res) => {
   const notes = await Note.find();
